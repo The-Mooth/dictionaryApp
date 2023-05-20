@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
 import axios from 'axios';
 import handleSearch from '../hooks/HandleSearch';
+import Logo from '../components/svgs/logo';
 
 const HomeScreen = () => {
   const [word, setWord] = useState('');
@@ -9,6 +10,7 @@ const HomeScreen = () => {
 
   return (
     <View style={styles.container}>
+      <Logo/> 
       <Text style={styles.title}>Dictionary App</Text>
       <TextInput
         style={styles.input}
