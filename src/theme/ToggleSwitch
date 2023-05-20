@@ -1,0 +1,8 @@
+
+
+
+const toggleSwitch = (previousState) => {
+  setIsEnabled((previousState) => !previousState);
+};
+
+export default toggleSwitch;
