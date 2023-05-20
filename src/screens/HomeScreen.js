@@ -1,20 +1,11 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
 import axios from 'axios';
+import handleSearch from '../hooks/HandleSearch';
 
 const HomeScreen = () => {
   const [word, setWord] = useState('');
   const [definition, setDefinition] = useState('');
-
-  const handleSearch = async () => {
-    try {
-      const response = await axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
-      const data = response.data[0].meanings[0].definitions[0].definition;
-      setDefinition(data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
   return (
     <View style={styles.container}>
@@ -25,7 +16,7 @@ const HomeScreen = () => {
         value={word}
         onChangeText={text => setWord(text)}
       />
-      <TouchableOpacity style={styles.button} onPress={handleSearch}>
+      <TouchableOpacity style={styles.button} onPress={() => handleSearch(setDefinition, word)}>
         <Text style={styles.buttonText}>Search</Text>
       </TouchableOpacity>
       {definition ? (
