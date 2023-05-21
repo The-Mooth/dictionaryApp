@@ -23,7 +23,7 @@ const Themes = {
         subtitle:'hsl(0, 0%, 91%)',
         input: 'hsl(0, 0%, 91%)',
         //moon: 'hsl(0, 0%, 23%)',
-        moon: 'hsl(274, 82%, 60%)',
+        moon: 'hsl(0, 100%, 66%)',
     },
 
     dark: {

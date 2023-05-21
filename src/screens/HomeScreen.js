@@ -11,8 +11,16 @@ import handleSearch from "../hooks/HandleSearch";
 import Logo from "../components/svgs/logo";
 import Arrow from "../components/svgs/arrow";
 import Moon from "../components/svgs/moon";
+import { useThemeColors } from "../hooks/useThemeColors";
+import { useCustomTheme } from "../hooks/useCustomTheme";
 import { Switch } from "react-native-gesture-handler";
 
+
+const handleToggleTheme = (theme, setTheme, setIsEnabled, isEnabled) => {
+  const nextTheme = theme === "light" ? "dark" : "light";
+  setTheme(nextTheme);
+  setIsEnabled(!isEnabled);
+};
 
 
 const HomeScreen = () => {
@@ -21,18 +29,18 @@ const HomeScreen = () => {
   const [isEnabled, setIsEnabled] = useState(false);
 
   const { colors } = useThemeColors();
+  const { theme, setTheme } = useCustomTheme();
 
   return (
     <View style={styles.container}>
       <View style={styles.row}>
         <Logo />
         <View style = {styles.subRow}>
-          <Text> "hell0"</Text>
+          <Text style={{color: colors.moon}}> "hell0"</Text>
           <Switch
             trackColor={{ false: "#767577", true: "#81b0ff" }}
-            onValueChange={() =>
-              setIsEnabled((previousState) => !previousState)
-            }
+            onValueChange={() => handleToggleTheme(theme, setTheme, setIsEnabled, isEnabled)}
+              //() => setIsEnabled((previousState) => !previousState)}
             value={isEnabled}
           />
 
