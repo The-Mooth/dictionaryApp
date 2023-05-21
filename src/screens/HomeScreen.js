@@ -13,10 +13,14 @@ import Arrow from "../components/svgs/arrow";
 import Moon from "../components/svgs/moon";
 import { Switch } from "react-native-gesture-handler";
 
+
+
 const HomeScreen = () => {
   const [word, setWord] = useState("");
   const [definition, setDefinition] = useState("");
   const [isEnabled, setIsEnabled] = useState(false);
+
+  const { colors } = useThemeColors();
 
   return (
     <View style={styles.container}>
@@ -32,7 +36,7 @@ const HomeScreen = () => {
             value={isEnabled}
           />
 
-          <Moon />
+          <Moon style={{color: colors.moon}}/>
         </View>
       </View>
       <View style={styles.row}>
