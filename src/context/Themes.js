@@ -8,11 +8,13 @@ const ThemeContext = createContext({
   theme: 'light',
   setTheme: () => {},
   colors: Colors['light'],
+  font: 'SpaceMono-Regular',
   loading: true,
 });
 
 const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState('light');
+  const [font, setFont] = useState('SpaceMono-Regular');
   const [loading, setLoading] = useState(true);
   const colors = Colors[theme];
 
@@ -31,7 +33,7 @@ const ThemeProvider = ({ children }) => {
   }, [theme]);
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme, loading, colors }}>
+    <ThemeContext.Provider value={{ theme, setTheme, font, setFont, loading, colors }}>
       {children}
     </ThemeContext.Provider>
   );

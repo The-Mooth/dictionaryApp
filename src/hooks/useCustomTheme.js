@@ -8,6 +8,8 @@ export const useCustomTheme = () => {
     theme: context.theme,
     colors: context.colors,
     setTheme: context.setTheme,
+    font: context.font,
+    setFont: context.setFont,
     loading: context.loading,
   };
 };
