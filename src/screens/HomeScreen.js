@@ -17,9 +17,10 @@ import { Switch } from "react-native-gesture-handler";
 
 
 const handleToggleTheme = (theme, setTheme, setIsEnabled, isEnabled) => {
+
+  setIsEnabled(!isEnabled);
   const nextTheme = theme === "light" ? "dark" : "light";
   setTheme(nextTheme);
-  setIsEnabled(!isEnabled);
 };
 
 
@@ -38,13 +39,14 @@ const HomeScreen = () => {
         <View style = {styles.subRow}>
           <Text style={{color: colors.moon}}> "hell0"</Text>
           <Switch
-            trackColor={{ false: "#767577", true: "#81b0ff" }}
+            trackColor={{ false: colors.moon, true: colors.moon }}
+            //thumbColor={isEnabled ? colors.moon : colors.moon}
             onValueChange={() => handleToggleTheme(theme, setTheme, setIsEnabled, isEnabled)}
               //() => setIsEnabled((previousState) => !previousState)}
             value={isEnabled}
           />
 
-          <Moon style={{color: colors.moon}}/>
+          <Moon fill={colors.moon}/>
         </View>
       </View>
       <View style={styles.row}>
