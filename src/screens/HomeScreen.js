@@ -4,13 +4,14 @@ import {
   Text,
   TextInput,
   StyleSheet,
-  TouchableOpacity,
+  Pressable,
 } from "react-native";
 
 import handleSearch from "../hooks/HandleSearch";
 import Logo from "../components/svgs/logo";
 import Arrow from "../components/svgs/arrow";
 import Moon from "../components/svgs/moon";
+import Search from "../components/svgs/search";
 import { useThemeColors } from "../hooks/useThemeColors";
 import { useCustomTheme } from "../hooks/useCustomTheme";
 import { Switch } from "react-native-gesture-handler";
@@ -18,22 +19,28 @@ import { Switch } from "react-native-gesture-handler";
 
 const handleToggleTheme = (theme, setTheme, setIsEnabled, isEnabled) => {
 
-  setIsEnabled(!isEnabled);
+  //setIsEnabled(!isEnabled);
   const nextTheme = theme === "light" ? "dark" : "light";
   setTheme(nextTheme);
+  setIsEnabled(!isEnabled);
 };
 
 
 const HomeScreen = () => {
   const [word, setWord] = useState("");
   const [definition, setDefinition] = useState("");
-  const [isEnabled, setIsEnabled] = useState(false);
 
   const { colors } = useThemeColors();
   const { theme, setTheme } = useCustomTheme();
 
+  const buttonStart = theme === "light" ? false : true;
+
+  const [isEnabled, setIsEnabled] = useState(buttonStart);
+
+  
+
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {backgroundColor: colors.background}]}>
       <View style={styles.row}>
         <Logo />
         <View style = {styles.subRow}>
@@ -49,19 +56,16 @@ const HomeScreen = () => {
           <Moon fill={colors.moon}/>
         </View>
       </View>
-      <View style={styles.row}>
+      <View style={[styles.input, {backgroundColor: colors.input}]}>
         <TextInput
-          style={styles.input}
+          style={styles.inputArea}
           placeholder="Enter a word"
           value={word}
           onChangeText={(text) => setWord(text)}
         />
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => handleSearch(setDefinition, word)}
-        >
-          <Text style={styles.buttonText}>Search</Text>
-        </TouchableOpacity>
+        <Pressable onPress={() => handleSearch(setDefinition, word)}>
+          <Search/>
+        </Pressable>
       </View>
       {definition ? <Text style={styles.definition}>{definition}</Text> : null}
     </View>
@@ -80,6 +84,7 @@ const styles = StyleSheet.create({
 
   row: {
     paddingTop: 5,
+    paddingHorizontal: 10,
     width: "100%",
     flexDirection: "row",
     alignItems: "center",
@@ -99,13 +104,22 @@ const styles = StyleSheet.create({
     //marginBottom: 20,
   },
   input: {
-    width: "80%",
+    //width: "85%",
     height: 40,
-    borderColor: "gray",
-    borderWidth: 1,
-    padding: 10,
+    //backgroundColor: colors.input,
+    borderRadius: 15,
+    marginTop: 15,
+    paddingHorizontal: 10,
     marginBottom: 20,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
   },
+
+  inputArea: {
+    width: "90%",
+  },
+
   button: {
     backgroundColor: "#4285f4",
     padding: 10,

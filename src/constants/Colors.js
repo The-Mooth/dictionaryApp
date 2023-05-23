@@ -18,6 +18,7 @@ colors: {
 const Themes = {
 
     light: {
+        background: 'hsl(0, 0%, 100%)',
         boldText: 'hsl(0, 0%, 2%)',
         text: 'hsl(0, 0%, 51%)',
         subtitle:'hsl(0, 0%, 91%)',
@@ -26,10 +27,11 @@ const Themes = {
     },
 
     dark: {
+        background: 'hsl(0, 0%, 2%)',
         boldText: 'hsl(0, 0%, 100%)',
         text: 'hsl(0, 0%, 96%)',
         subtitle:'hsl(0, 0%, 23%)',
-        input: 'hsl(0, 0%, 91%)',
+        input: 'hsl(0, 0%, 51%)',
         moon: 'hsl(274, 82%, 60%)',
     },
 }
