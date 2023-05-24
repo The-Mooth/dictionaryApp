@@ -6,7 +6,7 @@ import Arrow from "./svgs/arrow";
 
 const MakeMenu = () => {
 
-    const {setFont} = useCustomTheme();
+    const {font, setFont} = useCustomTheme();
 
     let data =[
         {label: 'monospace', value: 'monospace'},
@@ -16,10 +16,12 @@ const MakeMenu = () => {
 
     return ( 
         <DropDownPicker
+        containerStyle={{width: '60%',}}
+        defaultValue='monospace'
         placeholder="pick one"
         items ={data}
-        arrowIcon={Arrow}
-        onChangeItem={(value) => {setFont(value);}}
+        //arrowIcon={Arrow}
+        onChangeItem={(item) => {setFont(item.value);}}
         />
         
     )
