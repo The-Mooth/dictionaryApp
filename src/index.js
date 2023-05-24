@@ -14,6 +14,10 @@ const App = () => {
   const [fontsLoaded] = useFonts({
     'monospace-regular': require('../assets/fonts/inconsolata/static/Inconsolata-Regular.ttf'),
     'monospace-bold': require('../assets/fonts/inconsolata/static/Inconsolata-Bold.ttf'),
+    'sans-regular': require('../assets/fonts/inter/static/Inter-Regular.ttf'),
+    'sans-bold': require('../assets/fonts/inter/static/Inter-Bold.ttf'),
+    'serif-regular': require('../assets/fonts/lora/static/Lora-Regular.ttf'),
+    'serif-bold': require('../assets/fonts/lora/static/Lora-Bold.ttf'),
     //'SpaceMono-Bold': require('../../assets/fonts/SpaceMono-Bold.ttf'),
   });
 

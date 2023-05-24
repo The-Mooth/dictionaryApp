@@ -15,6 +15,7 @@ import Search from "../components/svgs/search";
 import { useThemeColors } from "../hooks/useThemeColors";
 import { useCustomTheme } from "../hooks/useCustomTheme";
 import { Switch } from "react-native-gesture-handler";
+import MakeMenu from "../components/FontMenu"
 
 
 const handleToggleTheme = (theme, setTheme, setIsEnabled, isEnabled) => {
@@ -31,7 +32,8 @@ const HomeScreen = () => {
   const [definition, setDefinition] = useState("");
 
   const { colors } = useThemeColors();
-  const { theme, setTheme } = useCustomTheme();
+  const { theme, setTheme, font, setFont} = useCustomTheme();
+  //const {font, setFont} = useCustomFont();
 
   const buttonStart = theme === "light" ? false : true;
 
@@ -44,7 +46,8 @@ const HomeScreen = () => {
       <View style={styles.row}>
         <Logo />
         <View style = {styles.subRow}>
-          <Text style={{color: colors.moon}}> "hell0"</Text>
+          <MakeMenu/>
+
           <Switch
             trackColor={{ false: colors.moon, true: colors.moon }}
             //thumbColor={isEnabled ? colors.moon : colors.moon}
@@ -67,7 +70,7 @@ const HomeScreen = () => {
           <Search/>
         </Pressable>
       </View>
-      {definition ? <Text style={styles.definition}>{definition}</Text> : null}
+      {definition ? <Text style={[styles.definition, {fontFamily: font}]}>{definition}</Text> : null}
     </View>
   );
 };
@@ -132,6 +135,7 @@ const styles = StyleSheet.create({
   definition: {
     fontSize: 20,
     marginTop: 20,
+    //fontFamily: 'serif-bold',
   },
 });
 
