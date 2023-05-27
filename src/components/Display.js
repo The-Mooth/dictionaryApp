@@ -5,7 +5,9 @@ import {
   TextInput,
   StyleSheet,
   Pressable,
+  ScrollView
 } from "react-native";
+import { MyText, MyTextBold } from "../theme/Text";
 
 
 const Display = ({definition, theme, font}) => {
@@ -19,19 +21,24 @@ const Display = ({definition, theme, font}) => {
     const data = JSON.parse(definition)
 
 return(
-    <View style={styles.container}> 
+    <ScrollView style={styles.container}> 
         <View style={styles.row}>
-            <Text style={[styles.word, {fontFamily: font+'-bold'}]}> {data.word} </Text>
+            <MyTextBold style={styles.word}> {data.word} </MyTextBold>
+            {//put the big ol button here!!
+            }
         </View>
-        <Text style={[styles.word, {fontFamily: font+'-regular'}]}> {data.phonetic} </Text>
-    </View>
+        <MyText style={styles.phonetic}> {data.phonetic} </MyText>
+    </ScrollView>
 )
 
 }
 
 const styles = StyleSheet.create({
 
-
+    phonetic : {
+        color: 'hsl(274, 82%, 60%)',
+        fontSize: 18,
+    },
 
     word : {
         fontSize: 40,
@@ -46,7 +53,7 @@ const styles = StyleSheet.create({
     },
 
     container: {
-        width: "80%",
+        width: "95%",
 
     },
 

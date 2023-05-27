@@ -50,7 +50,7 @@ const HomeScreen = () => {
         <View style = {styles.subRow}>
           {//<MakeMenu/>
 }
-      <MyText>{'-regular'}</MyText>
+      <MyText>{font}</MyText>
           <Switch
             trackColor={{ false: colors.moon, true: colors.moon }}
             //thumbColor={isEnabled ? colors.moon : colors.moon}

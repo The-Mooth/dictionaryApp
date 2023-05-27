@@ -20,11 +20,11 @@ const MyText = ({ style, ...rest }) => {
 
 const MyTextBold = ({ style, ...rest }) => {
   const { colors } = useThemeColors();
-
+  const {font} = useCustomTheme();
   return (
     <DefaultText
       style={[
-        { color: colors.text, fontFamily: font + '-bold', fontSize: 16 },
+        { color: colors.boldText, fontFamily: font + '-bold', fontSize: 16 },
         style,
       ]}
       {...rest}
@@ -34,7 +34,7 @@ const MyTextBold = ({ style, ...rest }) => {
 
 const MyTextItalic = ({ style, ...rest }) => {
   const { colors } = useThemeColors();
-
+  const {font} = useCustomTheme();
   return (
     <DefaultText
 
@@ -49,5 +49,5 @@ const MyTextItalic = ({ style, ...rest }) => {
 };
 
 
-export { MyText, MyTextBold };
+export { MyText, MyTextBold};
 export default MyText;

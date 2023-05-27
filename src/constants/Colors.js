@@ -15,6 +15,8 @@ colors: {
 },
 */
 
+export const purple = 'hsl(274, 82%, 60%)';
+
 const Themes = {
 
     light: {
