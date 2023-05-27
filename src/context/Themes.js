@@ -8,13 +8,13 @@ const ThemeContext = createContext({
   theme: 'light',
   setTheme: () => {},
   colors: Colors['light'],
-  font: 'serif-regular',
+  font: 'sans',
   loading: true,
 });
 
 const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState('light');
-  const [font, setFont] = useState('serif-regular');
+  const [font, setFont] = useState('sans');
   const [loading, setLoading] = useState(true);
   const colors = Colors[theme];
 

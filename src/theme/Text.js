@@ -1,13 +1,16 @@
 import { Text as DefaultText } from 'react-native';
 import { useThemeColors } from '../hooks/useThemeColors';
+import { useCustomTheme } from "../hooks/useCustomTheme";
+//import font, then set fonts dynamically
 
-const Text = ({ style, ...rest }) => {
+const MyText = ({ style, ...rest }) => {
   const { colors } = useThemeColors();
+  const {font} = useCustomTheme();
 
   return (
     <DefaultText
       style={[
-        { color: colors.text, fontFamily: 'SpaceMono-Regular', fontSize: 16 },
+        { color: colors.text, fontFamily: font + '-regular', fontSize: 16 },
         style,
       ]}
       {...rest}
@@ -15,13 +18,13 @@ const Text = ({ style, ...rest }) => {
   );
 };
 
-const TextBold = ({ style, ...rest }) => {
+const MyTextBold = ({ style, ...rest }) => {
   const { colors } = useThemeColors();
 
   return (
     <DefaultText
       style={[
-        { color: colors.text, fontFamily: 'SpaceMono-Bold', fontSize: 16 },
+        { color: colors.text, fontFamily: font + '-bold', fontSize: 16 },
         style,
       ]}
       {...rest}
@@ -29,5 +32,22 @@ const TextBold = ({ style, ...rest }) => {
   );
 };
 
-export { Text, TextBold };
-export default Text;
+const MyTextItalic = ({ style, ...rest }) => {
+  const { colors } = useThemeColors();
+
+  return (
+    <DefaultText
+
+
+      style={[
+        { color: colors.text, fontFamily: font + '-italic', fontSize: 16 },
+        style,
+      ]}
+      {...rest}
+    />
+  );
+};
+
+
+export { MyText, MyTextBold };
+export default MyText;

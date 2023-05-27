@@ -15,7 +15,9 @@ import Search from "../components/svgs/search";
 import { useThemeColors } from "../hooks/useThemeColors";
 import { useCustomTheme } from "../hooks/useCustomTheme";
 import { Switch } from "react-native-gesture-handler";
-import MakeMenu from "../components/FontMenu"
+import MakeMenu from "../components/FontMenu";
+import Display from "../components/Display";
+import { MyText, MyTextBold } from "../theme/Text";
 
 
 const handleToggleTheme = (theme, setTheme, setIsEnabled, isEnabled) => {
@@ -46,8 +48,9 @@ const HomeScreen = () => {
       <View style={styles.row}>
         <Logo />
         <View style = {styles.subRow}>
-          <MakeMenu/>
-
+          {//<MakeMenu/>
+}
+      <MyText>{'-regular'}</MyText>
           <Switch
             trackColor={{ false: colors.moon, true: colors.moon }}
             //thumbColor={isEnabled ? colors.moon : colors.moon}
@@ -61,7 +64,7 @@ const HomeScreen = () => {
       </View>
       <View style={[styles.input, {backgroundColor: colors.input}]}>
         <TextInput
-          style={styles.inputArea}
+          style={[styles.inputArea, {fontFamily: font+'-regular'}]}
           placeholder="Enter a word"
           value={word}
           onChangeText={(text) => setWord(text)}
@@ -70,7 +73,8 @@ const HomeScreen = () => {
           <Search/>
         </Pressable>
       </View>
-      {definition ? <Text style={[styles.definition, {fontFamily: font}]}>{definition}</Text> : null}
+      {definition ? <Display definition={definition} theme={theme} font={font}/> : null}
+
     </View>
   );
 };
