@@ -9,6 +9,7 @@ import {
   Linking,
 } from "react-native";
 import { MyText, MyTextSub, MyTextBold, MyTextDot } from "../theme/Text";
+import Play from "./svgs/play";
 
 const Display = ({ definition, colors}) => {
   if (definition === "") {
@@ -21,12 +22,16 @@ const Display = ({ definition, colors}) => {
     
     <View style={{ flex: 1}}>
         <View style={styles.row}>
+            <View>
         <MyTextBold style={styles.word}> {data.word} </MyTextBold>
-        {
-          //put the big ol button here!!
-        }
+        <MyText style={styles.phonetic}> {data.phonetic} </MyText>
+        </View>
+        
+          <Pressable onPress={() => {}}>
+            <Play />
+            </Pressable>
+        
       </View>
-      <MyText style={styles.phonetic}> {data.phonetic} </MyText>
 
     <ScrollView style={styles.container}>
       {//for each figure of speech
