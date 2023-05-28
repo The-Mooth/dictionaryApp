@@ -86,11 +86,17 @@ const Display = ({ definition, colors}) => {
       ) : (
         null
       )}
+      {data.sourceUrls.length > 0 ? (
+        <>
       <View style={[styles.bottomLine, {backgroundColor: colors.input}]} />
         <MyTextSub style={{fontSize: 12}}>Source</MyTextSub>
-        <Pressable onPress={() => Linking.openURL(`https://api.dictionaryapi.dev/api/v2/entries/en/${data.word}`)}>
-          <MyText style={{fontSize: 12, marginBottom: 5}}>`https://api.dictionaryapi.dev/api/v2/entries/en/{data.word}`</MyText>
+        <Pressable onPress={() => Linking.openURL(data.sourceUrls[0])}>
+          <MyText style={{fontSize: 12, marginBottom: 5}}>{data.sourceUrls[0]}</MyText>
         </Pressable>
+        </>
+        ) : (
+            null
+        )}
     </ScrollView>
     </View>
   );
