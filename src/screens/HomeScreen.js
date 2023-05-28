@@ -5,9 +5,8 @@ import {
   TextInput,
   StyleSheet,
   Pressable,
-  SafeAreaView
+  SafeAreaView,
 } from "react-native";
-
 
 import handleSearch from "../hooks/HandleSearch";
 import Logo from "../components/svgs/logo";
@@ -21,69 +20,72 @@ import MakeMenu from "../components/FontMenu";
 import Display from "../components/Display";
 import { MyText, MyTextBold, MyTextSub } from "../theme/Text";
 
-
-
 const handleToggleTheme = (theme, setTheme, setIsEnabled, isEnabled) => {
-
   //setIsEnabled(!isEnabled);
   const nextTheme = theme === "light" ? "dark" : "light";
   setTheme(nextTheme);
   setIsEnabled(!isEnabled);
 };
 
-
 const HomeScreen = () => {
   const [word, setWord] = useState("");
   const [definition, setDefinition] = useState("");
 
   const { colors } = useThemeColors();
-  const { theme, setTheme, font, setFont} = useCustomTheme();
+  const { theme, setTheme, font, setFont } = useCustomTheme();
   //const {font, setFont} = useCustomFont();
 
   const buttonStart = theme === "light" ? false : true;
 
   const [isEnabled, setIsEnabled] = useState(buttonStart);
 
-  
+  const handleEnter = () => {};
 
   return (
-    <SafeAreaView style={[styles.container, {backgroundColor: colors.background}]}>
+    <SafeAreaView
+      style={[styles.container, { backgroundColor: colors.background }]}
+    >
       <View style={styles.row}>
         <Logo />
-        <View style = {styles.subRow}>
-          {//<MakeMenu/>
-}
-      <MyText>{font}</MyText>
+        <View style={styles.subRow}>
+          {
+            //<MakeMenu/>
+          }
+          <MyText>{font}</MyText>
           <Switch
             trackColor={{ false: colors.moon, true: colors.moon }}
             //thumbColor={isEnabled ? colors.moon : colors.moon}
-            onValueChange={() => handleToggleTheme(theme, setTheme, setIsEnabled, isEnabled)}
-              //() => setIsEnabled((previousState) => !previousState)}
+            onValueChange={() =>
+              handleToggleTheme(theme, setTheme, setIsEnabled, isEnabled)
+            }
+            //() => setIsEnabled((previousState) => !previousState)}
             value={isEnabled}
           />
 
-          <Moon fill={colors.moon}/>
+          <Moon fill={colors.moon} />
         </View>
       </View>
-      <View style={[styles.input, {backgroundColor: colors.input}]}>
+      <View style={[styles.input, { backgroundColor: colors.input }]}>
         <TextInput
-          style={[styles.inputArea, {fontFamily: font+'-bold', color: colors.text, fontSize: 20}]}
-          placeholder="Enter a word"
-          placeholderTextColor={colors.text}
+          style={[
+            styles.inputArea,
+            { fontFamily: font + "-bold", color: colors.text, fontSize: 20 },
+          ]}
+          placeholder="Search for any word..."
+          placeholderTextColor={colors.subText}
           value={word}
           onChangeText={(text) => setWord(text)}
         />
         <Pressable onPress={() => handleSearch(setDefinition, word)}>
-          <Search/>
+          <Search />
         </Pressable>
       </View>
-      {definition ? <Display definition={definition} colors={colors}/> : null}
+      {definition ? <Display definition={definition} colors={colors} /> : null}
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-
   bottomRow: {
     paddingTop: 5,
     width: "100%",
@@ -94,7 +96,7 @@ const styles = StyleSheet.create({
 
   line: {
     height: 1,
-    width: "100%", 
+    width: "100%",
   },
 
   container: {

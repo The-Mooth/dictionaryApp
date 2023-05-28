@@ -10,7 +10,7 @@ const handleSearch = async (setDefinition, word) => {
     setDefinition(JSON.stringify(response.data[0]));
   } catch (error) {
     console.error(error);
-    setDefinition("")
+    setDefinition(null);
   }
 };
 
