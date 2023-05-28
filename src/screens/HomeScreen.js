@@ -38,9 +38,15 @@ const HomeScreen = () => {
   const buttonStart = theme === "light" ? false : true;
 
   const [isEnabled, setIsEnabled] = useState(buttonStart);
-
-  const handleEnter = () => {};
-
+/*
+  const handleEnter = () => {
+    if (word === "") {
+      setDefinition("");
+      return;
+    }
+    handleSearch(setDefinition, word);
+  };
+*/
   return (
     <SafeAreaView
       style={[styles.container, { backgroundColor: colors.background }]}
@@ -55,10 +61,8 @@ const HomeScreen = () => {
           <Switch
             trackColor={{ false: colors.moon, true: colors.moon }}
             //thumbColor={isEnabled ? colors.moon : colors.moon}
-            onValueChange={() =>
-              handleToggleTheme(theme, setTheme, setIsEnabled, isEnabled)
-            }
-            //() => setIsEnabled((previousState) => !previousState)}
+            onValueChange={
+            () => setIsEnabled((previousState) => !previousState)}
             value={isEnabled}
           />
 
@@ -80,7 +84,9 @@ const HomeScreen = () => {
           <Search />
         </Pressable>
       </View>
-      {definition ? <Display definition={definition} colors={colors} /> : null}
+      {definition === "ERRORHANDLE"? <MyText>ya fucked up</MyText> :(
+        definition ? <Display definition={definition} colors={colors}/> : null
+      )}
     </SafeAreaView>
   );
 };
