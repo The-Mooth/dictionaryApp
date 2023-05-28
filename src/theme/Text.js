@@ -10,7 +10,7 @@ const MyText = ({ style, ...rest }) => {
   return (
     <DefaultText
       style={[
-        { color: colors.textBold, fontFamily: font + '-regular', fontSize: 16, maxWidth: '99%' },
+        { color: colors.text, fontFamily: font + '-regular', fontSize: 16, maxWidth: '99%' },
         style,
       ]}
       {...rest}
@@ -25,7 +25,7 @@ const MyTextSub = ({ style, ...rest }) => {
   return (
     <DefaultText
       style={[
-        { color: colors.text, fontFamily: font + '-regular', fontSize: 16, maxWidth: '99%' },
+        { color: colors.subText, fontFamily: font + '-regular', fontSize: 16, maxWidth: '99%' },
         style,
       ]}
       {...rest}

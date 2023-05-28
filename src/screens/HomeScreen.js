@@ -19,7 +19,7 @@ import { useCustomTheme } from "../hooks/useCustomTheme";
 import { Switch } from "react-native-gesture-handler";
 import MakeMenu from "../components/FontMenu";
 import Display from "../components/Display";
-import { MyText, MyTextBold } from "../theme/Text";
+import { MyText, MyTextBold, MyTextSub } from "../theme/Text";
 
 
 
@@ -67,8 +67,9 @@ const HomeScreen = () => {
       </View>
       <View style={[styles.input, {backgroundColor: colors.input}]}>
         <TextInput
-          style={[styles.inputArea, {fontFamily: font+'-regular'}]}
+          style={[styles.inputArea, {fontFamily: font+'-bold', color: colors.text, fontSize: 20}]}
           placeholder="Enter a word"
+          placeholderTextColor={colors.text}
           value={word}
           onChangeText={(text) => setWord(text)}
         />
@@ -76,13 +77,26 @@ const HomeScreen = () => {
           <Search/>
         </Pressable>
       </View>
-      {definition ? <Display definition={definition} theme={theme} font={font}/> : null}
-
+      {definition ? <Display definition={definition} colors={colors}/> : null}
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
+
+  bottomRow: {
+    paddingTop: 5,
+    width: "100%",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+
+  line: {
+    height: 1,
+    width: "100%", 
+  },
+
   container: {
     paddingTop: 20,
     paddingHorizontal: 10,
@@ -115,11 +129,11 @@ const styles = StyleSheet.create({
   },
   input: {
     //width: "85%",
-    height: 40,
+    height: 50,
     //backgroundColor: colors.input,
     borderRadius: 15,
     marginTop: 15,
-    paddingHorizontal: 10,
+    paddingHorizontal: 25,
     marginBottom: 20,
     flexDirection: "row",
     alignItems: "center",
