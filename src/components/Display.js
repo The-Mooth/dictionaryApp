@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Pressable,
   ScrollView,
+  Linking,
 } from "react-native";
 import { MyText, MyTextSub, MyTextBold, MyTextDot } from "../theme/Text";
 
@@ -33,57 +34,57 @@ const Display = ({ definition, colors}) => {
         data.meanings.map((meaning, index) => (
           <View key={index}>
             <View style={styles.row}>
-              <MyTextBold> {meaning.partOfSpeech} </MyTextBold>
+              <MyTextBold style={{marginVertical: 5}}> {meaning.partOfSpeech} </MyTextBold>
               <View style={[styles.line, {backgroundColor: colors.input}]} />
             </View>
-            <MyTextSub>Meaning</MyTextSub>
+            <MyTextSub style={{marginVertical: 5}}>Meaning</MyTextSub>
             {//for each definition
             meaning.definitions.length > 0 ? (
                 meaning.definitions.map((definition, index) => (
                     <View key={index}>
                         <View style={styles.subRow}>
                         <MyTextDot>•</MyTextDot>
-                        <MyText> {definition.definition} </MyText>
+                        <MyText style={{marginVertical: 5}}> {definition.definition} </MyText>
                         </View>
                     
                     {//for each example
                     definition.example ? (
-                        <MyTextSub> {definition.example} </MyTextSub>
+                        <MyTextSub style={{paddingHorizontal: 8}}> {'"' + definition.example + '"'} </MyTextSub>
                     ) : (
-                        <MyText>no example</MyText>
+                        null
                     )}
 
                     </View>
 
                 ))
             ) : (
-                <MyText>no defs</MyText>
+                null
             )}
             {meaning.synonyms.length > 0 ? (
-                <View style={styles.row}>
-                    <MyText>Synonyms</MyText>
+                <View style={styles.subRow}>
+                    <MyTextSub>Synonyms    </MyTextSub>
                     <MyText style={{color: 'hsl(274, 82%, 60%)'}}> {meaning.synonyms.join(", ")} </MyText>
                 </View>
             ) : (
-                <MyText>no synonyms</MyText>
+                null
             )}
             {meaning.antonyms.length > 0 ? (
                 <View style={styles.subRow}>
-                    <MyText>Antonyms</MyText>
+                    <MyTextSub>Antonyms    </MyTextSub>
                     <MyText style={{color: 'hsl(274, 82%, 60%)'}}> {meaning.antonyms.join(", ")} </MyText>
                 </View>
             ) : (
-                <MyText>no antonyms</MyText>
+                null
             )}
           </View>
         ))
       ) : (
-        <MyText>no figures of speech???</MyText>
+        null
       )}
       <View style={[styles.bottomLine, {backgroundColor: colors.input}]} />
         <MyTextSub style={{fontSize: 12}}>Source</MyTextSub>
-        <Pressable>
-          <MyText style={{fontSize: 12}}>`https://api.dictionaryapi.dev/api/v2/entries/en/{data.word}`</MyText>
+        <Pressable onPress={() => Linking.openURL(`https://api.dictionaryapi.dev/api/v2/entries/en/${data.word}`)}>
+          <MyText style={{fontSize: 12, marginBottom: 5}}>`https://api.dictionaryapi.dev/api/v2/entries/en/{data.word}`</MyText>
         </Pressable>
     </ScrollView>
     </View>
