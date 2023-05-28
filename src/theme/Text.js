@@ -10,7 +10,22 @@ const MyText = ({ style, ...rest }) => {
   return (
     <DefaultText
       style={[
-        { color: colors.text, fontFamily: font + '-regular', fontSize: 16 },
+        { color: colors.textBold, fontFamily: font + '-regular', fontSize: 16, maxWidth: '99%' },
+        style,
+      ]}
+      {...rest}
+    />
+  );
+};
+
+const MyTextSub = ({ style, ...rest }) => {
+  const { colors } = useThemeColors();
+  const {font} = useCustomTheme();
+
+  return (
+    <DefaultText
+      style={[
+        { color: colors.text, fontFamily: font + '-regular', fontSize: 16, maxWidth: '99%' },
         style,
       ]}
       {...rest}
@@ -24,7 +39,7 @@ const MyTextBold = ({ style, ...rest }) => {
   return (
     <DefaultText
       style={[
-        { color: colors.boldText, fontFamily: font + '-bold', fontSize: 16 },
+        { color: colors.boldText, fontFamily: font + '-bold', fontSize: 16, maxWidth: '99%' },
         style,
       ]}
       {...rest}
@@ -40,7 +55,21 @@ const MyTextItalic = ({ style, ...rest }) => {
 
 
       style={[
-        { color: colors.text, fontFamily: font + '-italic', fontSize: 16 },
+        { color: colors.text, fontFamily: font + '-italic', fontSize: 16, maxWidth: '99%' },
+        style,
+      ]}
+      {...rest}
+    />
+  );
+};
+
+const MyTextDot = ({ style, ...rest }) => {
+  const { colors } = useThemeColors();
+  const {font} = useCustomTheme();
+  return (
+    <DefaultText
+      style={[
+        { color: 'hsl(274, 82%, 60%)', fontSize: 16, marginRight: 10},
         style,
       ]}
       {...rest}
@@ -49,5 +78,5 @@ const MyTextItalic = ({ style, ...rest }) => {
 };
 
 
-export { MyText, MyTextBold};
+export { MyText, MyTextSub, MyTextBold, MyTextItalic, MyTextDot};
 export default MyText;

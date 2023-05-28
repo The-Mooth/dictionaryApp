@@ -5,7 +5,9 @@ import {
   TextInput,
   StyleSheet,
   Pressable,
+  SafeAreaView
 } from "react-native";
+
 
 import handleSearch from "../hooks/HandleSearch";
 import Logo from "../components/svgs/logo";
@@ -18,6 +20,7 @@ import { Switch } from "react-native-gesture-handler";
 import MakeMenu from "../components/FontMenu";
 import Display from "../components/Display";
 import { MyText, MyTextBold } from "../theme/Text";
+
 
 
 const handleToggleTheme = (theme, setTheme, setIsEnabled, isEnabled) => {
@@ -44,7 +47,7 @@ const HomeScreen = () => {
   
 
   return (
-    <View style={[styles.container, {backgroundColor: colors.background}]}>
+    <SafeAreaView style={[styles.container, {backgroundColor: colors.background}]}>
       <View style={styles.row}>
         <Logo />
         <View style = {styles.subRow}>
@@ -75,7 +78,7 @@ const HomeScreen = () => {
       </View>
       {definition ? <Display definition={definition} theme={theme} font={font}/> : null}
 
-    </View>
+    </SafeAreaView>
   );
 };
 
