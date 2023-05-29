@@ -1,9 +1,11 @@
-import Sound from "react-native-sound";
+import { Audio } from 'expo-av';
 import { useEffect, useState } from "react";
 import { Pressable } from "react-native";
 import Play from "./svgs/play";
 
 const SoundButton = ({ data }) => {
+
+  /*
   const soundUrl = "";
 
   data.phonetics !== undefined
@@ -33,7 +35,7 @@ const SoundButton = ({ data }) => {
         // Release when it's done so we're not using up resources
         sound.release();
         });
-
+*/
   return (
   <Pressable><Play/></Pressable>
   )
