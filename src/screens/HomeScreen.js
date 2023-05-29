@@ -62,7 +62,9 @@ const HomeScreen = () => {
             trackColor={{ false: colors.moon, true: colors.moon }}
             //thumbColor={isEnabled ? colors.moon : colors.moon}
             onValueChange={
-            () => setIsEnabled((previousState) => !previousState)}
+            //() => setIsEnabled((previousState) => !previousState)
+            () => handleToggleTheme(theme, setTheme, setIsEnabled, isEnabled)
+          }
             value={isEnabled}
           />
 

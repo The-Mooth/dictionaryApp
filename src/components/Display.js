@@ -9,7 +9,7 @@ import {
   Linking,
 } from "react-native";
 import { MyText, MyTextSub, MyTextBold, MyTextDot } from "../theme/Text";
-import Play from "./svgs/play";
+import SoundButton from "./soundButton";
 
 const Display = ({ definition, colors }) => {
   if (definition === "") {
@@ -26,9 +26,7 @@ const Display = ({ definition, colors }) => {
           <MyText style={styles.phonetic}> {data.phonetic} </MyText>
         </View>
 
-        <Pressable onPress={() => {}}>
-          <Play />
-        </Pressable>
+        <SoundButton data={data}/>
       </View>
 
       <ScrollView style={styles.container}>
