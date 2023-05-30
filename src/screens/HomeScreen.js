@@ -19,6 +19,7 @@ import { Switch } from "react-native-gesture-handler";
 import MakeMenu from "../components/FontMenu";
 import Display from "../components/Display";
 import { MyText, MyTextBold, MyTextSub } from "../theme/Text";
+import Typo from "../components/typo";
 
 const handleToggleTheme = (theme, setTheme, setIsEnabled, isEnabled) => {
   //setIsEnabled(!isEnabled);
@@ -33,20 +34,24 @@ const HomeScreen = () => {
 
   const { colors } = useThemeColors();
   const { theme, setTheme, font, setFont } = useCustomTheme();
-  //const {font, setFont} = useCustomFont();
+  
+  const [isFocused, setIsFocused] = useState(false);
 
   const buttonStart = theme === "light" ? false : true;
 
   const [isEnabled, setIsEnabled] = useState(buttonStart);
-/*
-  const handleEnter = () => {
+
+  const [emptySearch, setEmptySearch] = useState(false);
+
+  const handleEnter = (setDefinition, word) => {
     if (word === "") {
       setDefinition("");
+      setEmptySearch(true);
       return;
     }
     handleSearch(setDefinition, word);
   };
-*/
+
   return (
     <SafeAreaView
       style={[styles.container, { backgroundColor: colors.background }]}
@@ -72,7 +77,7 @@ const HomeScreen = () => {
           <Moon fill={colors.moon} />
         </View>
       </View>
-      <View style={[styles.input, { backgroundColor: colors.input }]}>
+      <View style={[styles.input, { backgroundColor: colors.input, borderColor: colors.background }, isFocused && {borderColor: 'hsl(274, 82%, 60%)'}, emptySearch && {borderColor: 'hsl(0, 100%, 66%)'}]}>
         <TextInput
           style={[
             styles.inputArea,
@@ -81,20 +86,31 @@ const HomeScreen = () => {
           placeholder="Search for any word..."
           placeholderTextColor={colors.subText}
           value={word}
-          onChangeText={(text) => setWord(text)}
+          onChangeText={(text) => {setWord(text); setEmptySearch(false)}}
+
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
         />
-        <Pressable onPress={() => handleSearch(setDefinition, word)}>
+        <Pressable onPress={() => handleEnter(setDefinition, word)}>
           <Search />
         </Pressable>
       </View>
-      {definition === "ERRORHANDLE"? <MyText>ya fucked up</MyText> :(
-        definition ? <Display definition={definition} colors={colors}/> : null
+      {emptySearch ? <View style={styles.empty}><MyText style={{color: 'hsl(0, 100%, 66%)'}}>Whoops, can't be empty...</MyText></View> : <View/>}
+      {definition === "ERRORHANDLE"? <Typo/> :(
+        definition === "" ? null : <Display definition={definition} colors={colors}/>
       )}
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
+
+  empty: {
+    width: "90%",
+    flexDirection: "row",
+    alignItems: "flex-start",
+    marginTop: -12,
+  },
   bottomRow: {
     paddingTop: 5,
     width: "100%",
@@ -149,6 +165,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
+    borderWidth: 1,
   },
 
   inputArea: {
