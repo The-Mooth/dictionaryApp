@@ -17,4 +17,14 @@ test('renders correctly', async () => {
 
 //test font changes
 
-//test 
+//test theme changes
+
+//test search bar empty
+
+//test search bar with typo
+
+//test search bar with correct word
+
+//test audio
+
+//hoverstates?????
