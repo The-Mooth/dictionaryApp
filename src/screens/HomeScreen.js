@@ -54,10 +54,11 @@ const HomeScreen = () => {
       <View style={styles.row}>
         <Logo />
         <View style={styles.subRow}>
-          {
-            //<MakeMenu/>
-          }
-          <MyText>{font}</MyText>
+          
+            <MakeMenu setFont={setFont} font={font} colors={colors}/>
+          
+          <MyTextSub style={{ marginHorizontal: 10, fontSize: 20}}>|</MyTextSub>
+
           <Switch
             trackColor={{ false: colors.moon, true: colors.moon }}
             //thumbColor={isEnabled ? colors.moon : colors.moon}

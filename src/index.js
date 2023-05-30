@@ -12,8 +12,8 @@ import HomeScreen from "./screens/HomeScreen";
 const App = () => {
 
   const [fontsLoaded] = useFonts({
-    'monospace-regular': require('../assets/fonts/inconsolata/static/Inconsolata-Regular.ttf'),
-    'monospace-bold': require('../assets/fonts/inconsolata/static/Inconsolata-Bold.ttf'),
+    'mono-regular': require('../assets/fonts/inconsolata/static/Inconsolata-Regular.ttf'),
+    'mono-bold': require('../assets/fonts/inconsolata/static/Inconsolata-Bold.ttf'),
     'sans-regular': require('../assets/fonts/inter/static/Inter-Regular.ttf'),
     'sans-bold': require('../assets/fonts/inter/static/Inter-Bold.ttf'),
     'serif-regular': require('../assets/fonts/lora/static/Lora-Regular.ttf'),
