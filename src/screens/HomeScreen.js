@@ -54,6 +54,7 @@ const HomeScreen = () => {
 
   return (
     <SafeAreaView
+    testID="mainView"
       style={[styles.container, { backgroundColor: colors.background }]}
     >
       <View style={styles.row}>
@@ -64,7 +65,7 @@ const HomeScreen = () => {
           
           <MyTextSub style={{ marginHorizontal: 10, fontSize: 20}}>|</MyTextSub>
 
-          <Switch
+          <Switch testID="themeSwitch"
             trackColor={{ false: colors.moon, true: colors.moon }}
             //thumbColor={isEnabled ? colors.moon : colors.moon}
             onValueChange={
@@ -78,7 +79,7 @@ const HomeScreen = () => {
         </View>
       </View>
       <View style={[styles.input, { backgroundColor: colors.input, borderColor: colors.background }, isFocused && {borderColor: 'hsl(274, 82%, 60%)'}, emptySearch && {borderColor: 'hsl(0, 100%, 66%)'}]}>
-        <TextInput
+        <TextInput testID="myTextInput"
           style={[
             styles.inputArea,
             { fontFamily: font + "-bold", color: colors.text, fontSize: 20 },
@@ -91,12 +92,12 @@ const HomeScreen = () => {
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
         />
-        <Pressable onPress={() => handleEnter(setDefinition, word)}>
+        <Pressable testID="search" onPress={() => handleEnter(setDefinition, word)}>
           <Search />
         </Pressable>
       </View>
       {emptySearch ? <View style={styles.empty}><MyText style={{color: 'hsl(0, 100%, 66%)'}}>Whoops, can't be empty...</MyText></View> : <View/>}
-      {definition === "ERRORHANDLE"? <Typo/> :(
+      {definition === "ERRORHANDLE"? <Typo testID="typo"/> :(
         definition === "" ? null : <Display definition={definition} colors={colors}/>
       )}
     </SafeAreaView>

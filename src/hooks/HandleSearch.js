@@ -9,7 +9,6 @@ const handleSearch = async (setDefinition, word) => {
     //const data = response.data[0].meanings[0].definitions[0].definition;
     setDefinition(JSON.stringify(response.data[0]));
   } catch (error) {
-    console.error(error);
     setDefinition("ERRORHANDLE");
   }
 };
