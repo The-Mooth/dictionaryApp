@@ -1,6 +1,8 @@
 import React from "react";
 import { Audio } from "expo-av";
 
+//plays audio from api response
+
 const playAudio = async (data) => {
   const soundObject = new Audio.Sound();
   let soundUrl = "";

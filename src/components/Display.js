@@ -11,6 +11,9 @@ import { MyText, MyTextSub, MyTextBold, MyTextDot } from "../theme/Text";
 import PlayAudio from "./playSound";
 import Play from "./svgs/play";
 
+//handles the logic and generation, once it recieves a valid api response
+
+
 const Display = ({ definition, colors }) => {
 
 

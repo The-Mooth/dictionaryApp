@@ -1,6 +1,8 @@
 import { View, StyleSheet } from "react-native";
 import { MyText, MyTextBold, MyTextSub } from "../theme/Text";
 
+//returns instead of Display if api response is invalid
+
 const Typo = () => {
   return (
     <View style={styles.container}>

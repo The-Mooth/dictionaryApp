@@ -1,5 +1,5 @@
 import axios from "axios";
-
+//pings api and returns definition of word
 const handleSearch = async (setDefinition, word) => {
   const query = word.toLowerCase().trim();
   try {

@@ -26,6 +26,7 @@ const handleToggleTheme = (theme, setTheme, setIsEnabled, isEnabled) => {
 };
 
 const HomeScreen = () => {
+  //manage all usestates
   const [word, setWord] = useState("");
   const [definition, setDefinition] = useState("");
 
@@ -40,6 +41,8 @@ const HomeScreen = () => {
 
   const [emptySearch, setEmptySearch] = useState(false);
 
+
+  //handle search. if empty, set empty search to true
   const handleEnter = (setDefinition, word) => {
     if (word === "") {
       setDefinition("");

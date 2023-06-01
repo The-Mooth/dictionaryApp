@@ -3,6 +3,8 @@ import { useState } from "react";
 import Arrow from "./svgs/arrow";
 import { MyTextBold } from "../theme/Text";
 
+//handles font selection and modal display
+
 const MakeMenu = ({ setFont, font, colors }) => {
   const [modalVisible, setModalVisible] = useState(false);
 
