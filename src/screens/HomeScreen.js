@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {
   View,
-  Text,
   TextInput,
   StyleSheet,
   Pressable,
@@ -10,7 +9,6 @@ import {
 
 import handleSearch from "../hooks/HandleSearch";
 import Logo from "../components/svgs/logo";
-import Arrow from "../components/svgs/arrow";
 import Moon from "../components/svgs/moon";
 import Search from "../components/svgs/search";
 import { useThemeColors } from "../hooks/useThemeColors";
@@ -18,11 +16,10 @@ import { useCustomTheme } from "../hooks/useCustomTheme";
 import { Switch } from "react-native-gesture-handler";
 import MakeMenu from "../components/FontMenu";
 import Display from "../components/Display";
-import { MyText, MyTextBold, MyTextSub } from "../theme/Text";
+import { MyText, MyTextSub } from "../theme/Text";
 import Typo from "../components/typo";
 
 const handleToggleTheme = (theme, setTheme, setIsEnabled, isEnabled) => {
-  //setIsEnabled(!isEnabled);
   const nextTheme = theme === "light" ? "dark" : "light";
   setTheme(nextTheme);
   setIsEnabled(!isEnabled);
@@ -34,7 +31,7 @@ const HomeScreen = () => {
 
   const { colors } = useThemeColors();
   const { theme, setTheme, font, setFont } = useCustomTheme();
-  
+
   const [isFocused, setIsFocused] = useState(false);
 
   const buttonStart = theme === "light" ? false : true;
@@ -54,32 +51,40 @@ const HomeScreen = () => {
 
   return (
     <SafeAreaView
-    testID="mainView"
+      testID="mainView"
       style={[styles.container, { backgroundColor: colors.background }]}
     >
       <View style={styles.row}>
         <Logo />
         <View style={styles.subRow}>
-          
-            <MakeMenu setFont={setFont} font={font} colors={colors}/>
-          
-          <MyTextSub style={{ marginHorizontal: 10, fontSize: 20}}>|</MyTextSub>
+          <MakeMenu setFont={setFont} font={font} colors={colors} />
 
-          <Switch testID="themeSwitch"
+          <MyTextSub style={{ marginHorizontal: 10, fontSize: 20 }}>
+            |
+          </MyTextSub>
+
+          <Switch
+            testID="themeSwitch"
             trackColor={{ false: colors.moon, true: colors.moon }}
-            //thumbColor={isEnabled ? colors.moon : colors.moon}
-            onValueChange={
-            //() => setIsEnabled((previousState) => !previousState)
-            () => handleToggleTheme(theme, setTheme, setIsEnabled, isEnabled)
-          }
+            onValueChange={() =>
+              handleToggleTheme(theme, setTheme, setIsEnabled, isEnabled)
+            }
             value={isEnabled}
           />
 
           <Moon fill={colors.moon} />
         </View>
       </View>
-      <View style={[styles.input, { backgroundColor: colors.input, borderColor: colors.background }, isFocused && {borderColor: 'hsl(274, 82%, 60%)'}, emptySearch && {borderColor: 'hsl(0, 100%, 66%)'}]}>
-        <TextInput testID="myTextInput"
+      <View
+        style={[
+          styles.input,
+          { backgroundColor: colors.input, borderColor: colors.background },
+          isFocused && { borderColor: "hsl(274, 82%, 60%)" },
+          emptySearch && { borderColor: "hsl(0, 100%, 66%)" },
+        ]}
+      >
+        <TextInput
+          testID="myTextInput"
           style={[
             styles.inputArea,
             { fontFamily: font + "-bold", color: colors.text, fontSize: 20 },
@@ -87,25 +92,39 @@ const HomeScreen = () => {
           placeholder="Search for any word..."
           placeholderTextColor={colors.subText}
           value={word}
-          onChangeText={(text) => {setWord(text); setEmptySearch(false)}}
-
+          onChangeText={(text) => {
+            setWord(text);
+            setEmptySearch(false);
+          }}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
         />
-        <Pressable testID="search" onPress={() => handleEnter(setDefinition, word)}>
+        <Pressable
+          testID="search"
+          onPress={() => handleEnter(setDefinition, word)}
+        >
           <Search />
         </Pressable>
       </View>
-      {emptySearch ? <View style={styles.empty}><MyText style={{color: 'hsl(0, 100%, 66%)'}}>Whoops, can't be empty...</MyText></View> : <View/>}
-      {definition === "ERRORHANDLE"? <Typo testID="typo"/> :(
-        definition === "" ? null : <Display definition={definition} colors={colors}/>
+      {emptySearch ? (
+        <View style={styles.empty}>
+          <MyText style={{ color: "hsl(0, 100%, 66%)" }}>
+            Whoops, can't be empty...
+          </MyText>
+        </View>
+      ) : (
+        <View />
+      )}
+      {definition === "ERRORHANDLE" ? (
+        <Typo testID="typo" />
+      ) : definition === "" ? null : (
+        <Display definition={definition} colors={colors} />
       )}
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-
   empty: {
     width: "90%",
     flexDirection: "row",
@@ -150,15 +169,9 @@ const styles = StyleSheet.create({
 
   title: {
     fontSize: 20,
-    //alignItems: "center",
-    //marginHorizontal: 15,
-
-    //marginBottom: 20,
   },
   input: {
-    //width: "85%",
     height: 50,
-    //backgroundColor: colors.input,
     borderRadius: 15,
     marginTop: 15,
     paddingHorizontal: 25,
@@ -185,7 +198,6 @@ const styles = StyleSheet.create({
   definition: {
     fontSize: 20,
     marginTop: 20,
-    //fontFamily: 'serif-bold',
   },
 });
 

@@ -1,8 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   View,
-  Text,
-  TextInput,
   StyleSheet,
   Pressable,
   ScrollView,
@@ -31,7 +29,7 @@ const Display = ({ definition, colors }) => {
           <MyText style={styles.phonetic}> {data.phonetic} </MyText>
         </View>
 
-        <Pressable onPress={() => PlayAudio(data)}><Play/></Pressable>
+        <Pressable testID="playButton" onPress={() => PlayAudio(data)}><Play/></Pressable>
 
       </View>
 

@@ -7,29 +7,25 @@ import {
 } from "react-native";
 import handleSearch from "../hooks/HandleSearch";
 import React from "react";
-import { useThemeColors } from "../hooks/useThemeColors";
-import search from "./svgs/search"
+
 
 const InputArea = (word, handleInputChange, setDefinition) => {
-
-    
   return (
     <View style={styles.input}>
       <TextInput
-        ///style={styles.input}
         placeholder="Enter a word"
         value={word}
         onChangeText={handleInputChange}
       />
-      
-      
-      {<TouchableOpacity
-        style={styles.button}
-        onPress={() => handleSearch(setDefinition, word)}
-      >
-        <Text style={styles.buttonText}>Search</Text>
-      </TouchableOpacity>
-}
+
+      {
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => handleSearch(setDefinition, word)}
+        >
+          <Text style={styles.buttonText}>Search</Text>
+        </TouchableOpacity>
+      }
     </View>
   );
 };

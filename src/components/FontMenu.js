@@ -1,8 +1,7 @@
 import { Modal, Pressable, View, StyleSheet } from "react-native";
-import { useCustomTheme } from "../hooks/useCustomTheme";
 import { useState } from "react";
 import Arrow from "./svgs/arrow";
-import { MyText, MyTextBold } from "../theme/Text";
+import { MyTextBold } from "../theme/Text";
 
 const MakeMenu = ({ setFont, font, colors }) => {
   const [modalVisible, setModalVisible] = useState(false);

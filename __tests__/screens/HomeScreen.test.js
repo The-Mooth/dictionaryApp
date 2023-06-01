@@ -137,26 +137,43 @@ test("search is a typo", async () => {
   );
 });
 //test search bar with correct word
-test("search is a typo", async () => {
+test("search a correct word", async () => {
   const { getByTestId, getByText } = render(<HomeScreen />);
   const input = getByTestId("myTextInput");
 
-  fireEvent.changeText(input, "asdfasdfa");
+  fireEvent.changeText(input, "keyboard");
 
   const searchButton = getByTestId("search");
   fireEvent.press(searchButton);
   await waitFor(
     () => {
       
-      const errormsg = getByText("No Definitions Found");
-      expect(errormsg).not.toBeNull();
+      const msg = getByText("Source");
+      expect(msg).not.toBeNull();
     
     },
     { timeout: 600 }
   );
 });
 //test audio
+test("audio works", async () => {
+  const { getByTestId} = render(<HomeScreen />);
+  const input = getByTestId("myTextInput");
 
+  fireEvent.changeText(input, "keyboard");
+
+  const searchButton = getByTestId("search");
+  fireEvent.press(searchButton);
+  await waitFor(
+    () => {
+      
+      const playButton = getByTestId("playButton");
+      expect(playButton).not.toBeNull();
+    
+    },
+    { timeout: 600 }
+  );
+});
 
 
 //hoverstates?????
